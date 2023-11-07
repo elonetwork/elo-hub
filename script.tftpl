@@ -1,0 +1,6 @@
+#!/bin/bash
+sudo apt-get update
+sudo apt-get install squid
+echo "http_port 3128" >> /etc/squid/squid.conf
+echo "acl localnet src 10.0.4.0/24" >> /etc/squid/squid.conf
+echo "http_access allow localnet" >> /etc/squid/squid.conf
