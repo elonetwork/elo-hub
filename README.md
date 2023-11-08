@@ -53,7 +53,7 @@ This Terraform project is organized as follows:
 
 ## Modules
 
-Describe the purpose and function of each module in your project. Mention what resources they create or manage.
+the purpose and function of each module in the project
 
 - Module 1: vnet-hub
 --> Network key entry
