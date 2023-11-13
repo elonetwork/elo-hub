@@ -1,13 +1,17 @@
-#init the vnet-hub resources
-module "vnet-hub" {
-  source = "./modules/vnet-hub"
-}
+# # # # main.tf or similar
 
-#init the vnet-prd ressources
-module "vnet-prd" {
-  source = "./modules/vnet-prd"
-}
+# module "vnet-hub" {
+#   source = "./vnet-hub/modules/"
+# }
 
-#init the vnet-mgm ressources
-###
+# # # module "network" {
+# # #   source = "./modules/network"
+# # #   resource_group_name = module.infrastructure.resource_group_name
+# # #   # other module-specific configurations
+# # # }
 
+# # # module "security" {
+# # #   source = "./modules/security"
+# # #   resource_group_name = module.infrastructure.resource_group_name
+# # #   # other module-specific configurations
+# # # }

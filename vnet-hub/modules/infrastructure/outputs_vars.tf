@@ -1,6 +1,6 @@
-output "vnet_name" {
+output "vnet_hub_name" {
   description = "Output of the vnet_name variable"
-  value       = var.vnet_name
+  value       = var.vnet_hub_name
 }
 output "address_space" {
   description = "Output of the address_space variable"
@@ -13,7 +13,4 @@ output "location" {
 output "resource_group_name" {
   description = "Output of the resource_group_name variable"
   value       = var.resource_group_name
-}
-output "public_ip_address" {
-  value = azurerm_public_ip.public_ip.ip_address
 }
