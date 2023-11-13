@@ -19,8 +19,8 @@ generate "backend" {
 terraform {
   backend "azurerm" {
         key = "${path_relative_to_include()}/terraform.tfstate"
-        resource_group_name = "1-2e696e34-playground-sandbox"
-        storage_account_name = "tfstatstorage"
+        resource_group_name = "1-e0fb6f93-playground-sandbox"
+        storage_account_name = "tfstatstorag"
         container_name = "tfstate"
   }
 }
@@ -31,13 +31,13 @@ remote_state {
     backend = "azurerm"
     config = {
         key = "${path_relative_to_include()}/terraform.tfstate"
-        resource_group_name = "1-2e696e34-playground-sandbox"
-        storage_account_name = "tfstatstorage"
+        resource_group_name = "1-e0fb6f93-playground-sandbox"
+        storage_account_name = "tfstatstorag"
         container_name = "tfstate"
     }
 }
 
 inputs= {
      location = "eastus"
-     resource_group_name = "1-2e696e34-playground-sandbox"
+     resource_group_name = "1-e0fb6f93-playground-sandbox"
 }

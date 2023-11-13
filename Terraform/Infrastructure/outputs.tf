@@ -18,3 +18,7 @@ output "vnet-hub-name" {
 output "subnet-firwall-mgm-id" {
   value = module.firewall-mgmt.subnet_id
 }
+
+output "app-interface-bastion-private_ip_address" {
+  value = azurerm_network_interface.app_interface.ip_configuration[0].private_ip_address
+}

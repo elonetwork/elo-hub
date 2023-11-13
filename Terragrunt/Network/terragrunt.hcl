@@ -1,22 +1,20 @@
-/* include "root" {
-  path = find_in_parent_folders("terragrunt.hcl")
+include "root" {
+  paths = ["../Security/"]
 }
 
-terraform{
-    source="../../Terraform//Network/"
-}
-
-dependencies {
-  paths = ["../Infrastructure/"]
-}
-
-dependency "subnet-bastion" {
+dependency "subnet-squid" {
   config_path = "../Infrastructure/"
 }
 
+dependency "firewall_private_ip_address" {
+  config_path = "../Security/"
+}
+
 inputs = {
-  name-interface="app_interface_bastion"
-  resource_group_name ="1-2e696e34-playground-sandbox"
-  subnet_id = dependency.subnet-bastion.outputs.subnet-bastion-id
-  location ="eastus"
-} */
+  route-table-name="route-table"
+  subnet-squid-id = dependency.subnet-squid.outputs.subnet-squid-id
+  route-squid-name="route-squid-to-http"
+  route-address-prefix="0.0.0.0/0"
+  route-squid-next-hop-type="VirtualAppliance"
+  route-squid-next_hop_in_ip_address=dependency.firewall_private_ip_address.outputs.firewall_private_ip_address
+}
