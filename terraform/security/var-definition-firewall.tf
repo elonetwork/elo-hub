@@ -30,3 +30,19 @@ variable "bastion_private_ip" {
 
 variable "squid_private_ip" {
 }
+
+variable "firewall_sku_name" {
+  
+}
+
+variable "firewall_sku_tier" {
+  
+}
+
+variable "firewall_ip_configuration_name" {
+  
+}
+
+variable "firewall_management_ip_configuration_name" {
+  
+}

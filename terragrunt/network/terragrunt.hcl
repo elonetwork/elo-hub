@@ -23,4 +23,10 @@ inputs = {
   sub_squid_id = dependency.infrastructure.outputs.sub_squid_id
   vnet_hub_id = dependency.infrastructure.outputs.vnet_hub_id
   vnet_hub_name = dependency.infrastructure.outputs.vnet_hub_name
+
+  squid-vm-route-table_name = "squid-vm-route-table"
+  squid_route_name = "route_squid_to_firewall"
+  squid_route_address_prefix = "0.0.0.0/0"
+  squid_route_next_hop_type = "VirtualAppliance"
+
 }

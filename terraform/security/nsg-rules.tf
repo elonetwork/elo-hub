@@ -1,7 +1,7 @@
 
 # Allow inboud  ssh connection to the bastion private ip
 resource "azurerm_network_security_rule" "nsr_in_ssh_vm_bastion" {
-  name                        = "nsr_ssh_vm_bastion"
+  name                        = var.nsr_in_ssh_vm_bastion_name
   priority                    = 110
   direction                   = "Inbound"
   access                      = "Allow"
@@ -16,7 +16,7 @@ resource "azurerm_network_security_rule" "nsr_in_ssh_vm_bastion" {
 
 # allow outbound ssh from bastion vm to other vms
 resource "azurerm_network_security_rule" "nsr_out_ssh_vm_bastion" {
-  name                        = "nsr_out_ssh_vm_bastion"
+  name                        = var.nsr_out_ssh_vm_bastion_name
   priority                    = 110
   direction                   = "Outbound"
   access                      = "Allow"
@@ -32,7 +32,7 @@ resource "azurerm_network_security_rule" "nsr_out_ssh_vm_bastion" {
 
 # Allow inboud  ssh connection to the squid private ip
 resource "azurerm_network_security_rule" "nsr_in_ssh_vm_squid" {
-  name                        = "nsr_in_ssh_vm_squid"
+  name                        = var.nsr_in_ssh_vm_squid_name
   priority                    = 110
   direction                   = "Inbound"
   access                      = "Allow"
@@ -47,7 +47,7 @@ resource "azurerm_network_security_rule" "nsr_in_ssh_vm_squid" {
 
 # Allow outbound hhtp and https connection from vm squid
 resource "azurerm_network_security_rule" "nsr_out_web_vm_squid" {
-  name                        = "nsr_out_web_vm_squid"
+  name                        = var.nsr_out_web_vm_squid
   priority                    = 110
   direction                   = "Outbound"
   access                      = "Allow"
@@ -63,7 +63,7 @@ resource "azurerm_network_security_rule" "nsr_out_web_vm_squid" {
 
 # Allow outbound hhtp and https connection from vm bastion
 resource "azurerm_network_security_rule" "nsr_out_web_vm_bastion" {
-  name                        = "nsr_out_web_vm_squid"
+  name                        = var.nsr_out_web_vm_bastion
   priority                    = 111
   direction                   = "Outbound"
   access                      = "Allow"

@@ -22,16 +22,16 @@ resource "azurerm_virtual_machine" "vm-bastion" {
   
   storage_os_disk {
     name              = var.bastion_storage_os_disk_name
-    caching           = "ReadWrite"
-    create_option     = "FromImage"
-    managed_disk_type = "Standard_LRS"
+    caching           = var.bastion_storage_os_disk_caching
+    create_option     = var.bastion_storage_os_disk_create_option
+    managed_disk_type = var.bastion_storage_os_disk_create_option
   }
 
   storage_image_reference {
-    publisher = "Canonical"
-    offer     = "UbuntuServer"
-    sku       = "18.04-LTS"
-    version   = "latest"
+    publisher = var.bastion_storage_image_reference_publisher
+    offer     = var.bastion_storage_image_reference_offer
+    sku       = var.bastion_storage_image_reference_sku
+    version   = var.bastion_storage_image_reference_version
   }
 
   os_profile {

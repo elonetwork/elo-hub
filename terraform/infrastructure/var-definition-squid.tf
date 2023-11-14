@@ -24,3 +24,31 @@ variable "interace_squid_ip_config_name" {
 
 variable "interace_squid_ip_config_private_ip_allocation" {
 }
+
+variable "squid_storage_os_disk_caching" {
+  
+}
+
+variable "squid_storage_os_disk_create_option" {
+  
+}
+
+variable "squid_storage_os_disk_create_option" {
+  
+}
+
+variable "squid_storage_image_reference_publisher" {
+  
+}
+
+variable "squid_storage_image_reference_offer" {
+  
+}
+
+variable "squid_storage_image_reference_sku" {
+  
+}
+
+variable "squid_storage_image_reference_version" {
+  
+}
