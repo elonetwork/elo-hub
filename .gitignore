@@ -1,0 +1,7 @@
+config.txt
+notes.txt
+terraform.tfvars
+.terraform
+createStorageAccount.txt
+.terragrunt-cache
+.terrafrom.lock.hcl
