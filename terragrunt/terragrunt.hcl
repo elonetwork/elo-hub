@@ -17,17 +17,17 @@ remote_state {
     if_exists = "overwrite"
   }
   config = {
-    resource_group_name  = "1-1284a985-playground-sandbox"
-    storage_account_name = "storageaccountguru3"
-    container_name       = "hubcontainer"
+    resource_group_name  = "1-47b00d92-playground-sandbox"
+    storage_account_name = "hubspokesacount"
+    container_name       = "statecontainer"
     key                  = "${path_relative_to_include("hub")}/terraform.tfstate"
   }
 }
 
 inputs = {
-  location = "southcentralus"
-  resource_group_name = "1-1284a985-playground-sandbox"
-  ssh_public_key = file("C:/Users/LENOVO/.ssh/id_rsa.pub")
-  //ssh_public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDp3L/8xh1hQwutlnbkJPlOkM3JtMXQGZZH/UBZYB7zOLM0VXXcRCxEI2VbZZ9Iv9clU051qi2AMeWuSUoT7pHGJ4v5y8CZVygPtCGRLYNyxkExHa2CrSEas8DDelKq3LAteuBmZTQWM9MhFHpOtAIxI27FScoZ+XX3Cv7q+RlHM+1QJukvU42SaFxM737dVhYo9Y3xUxkB9gXHpwZPB/ujAVSggwQ2Cv65GJxTZcOpF8GEc7yFVU1mrEO8nThvV/vU9n7UfO7svbETjDu84dxYx4d6egfkJJEluy3K6wELzZAzSBL5r3B0H8V91NKiHVHYzFckfBkWMu0AoEytUzH8en57eH7nVr2mIbhSHEV6dkhjXsHDiTSbB/GW985WygO5cDkxys6TxDf38AWmLFOlHt3iNYwiN0xFxvPBpWrjUPyn4QJ6oNr8vcamsHMC+uWgPMHTJjl4BHjHw8mToxVpqLF18umdQI93lWTTLtgz5ItruQUDwviABwnuQ43EhLkLzUqlBJhjIPNlH/PveAU5gE7nTxvDrLOcXNQISL9vBBL3o6fnaL3IZ18peFR1YQncI75njAzl55kBCQA0GevAcO4XTTQckinPgle2eEG0DSzKlg1kS2igMXQDKCIghLM0B+cUQaiJOEQ2j+XZfCJciYLuqdTG57z86kPZKrVs6w== saijiro"
+  location = "eastus"
+  resource_group_name = "1-47b00d92-playground-sandbox"
+  ssh_public_key = file("C:/Users/MSI/.ssh/id_rsa.pub")
+  //ssh_public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDFRKEm89wkjpMTz3DY02eZpoo6ojzJibqdoxI0cmNS34iETdJzcCVoStg0S79c7FT7XzK4vg5cOJA/0WpZYA8tc1Mjt9CbCDd9ib+MFK58yHIr6+iZpE7+4et6S9NI5jrrde3koStetQxNFpO/atwGJfHfjvc88N07E3BDOL6Ctl4SfXxIGz9cZtmm7XIF85u49pg1xttL1VuoC7AnOH2iVSScTaVSwLGc7ZPdH/EIC/tz+sLeP3rn8kjtfha2kg/nfBtVprFP2V+L+Jtxi3+Q8c4HnTYz3bEX3C14tRtMJYrY86HfFNC6nImQbTnT9s4OVfiLRNXZamUXlEt6gVgO7gb8ssb2MuZqnCNYbS8GF14Z4TDiHTHzuTAE9h8mAeK2/ZKRHAfOhEu/E+y1IY9MwIsvxmZGufmkKZKvj3c9jrzIDC0GxAHB5HMbpuqS2Ke544aHw3b5WVnVee0cY4bYJBXA7NKAKVxBEnLJV9UChabc+ok3zu0JXrw9GceQ+H8ab7JzAZSPKv78BNSLeRQxLtz66aQhSXALPeRoJfHuDVqq9fnvj4A/UWMlocuXspc2sgAawBcKcgOIeAtlduepzQJ5mgDKX1kK7vnEhBqMNpDxrVmZ882vfnZZDS5BqqJJCOr7i5vDmLKhKeos3YTW+u5tZzG6PBM4oeP4G+ZmNQ== msi@DESKTOP-O9IA1B8"
 
 }
