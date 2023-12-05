@@ -1,0 +1,12 @@
+#!/bin/bash
+sudo apt-get update
+sudo apt-get install -y squid 
+sudo echo "http_port 3128" > /etc/squid/squid.conf
+%{ for sub_addr in address_prefixes ~}
+sudo echo "acl allowedips src ${sub_addr}" >> /etc/squid/squid.conf
+%{ endfor ~}
+sudo echo "http_access allow allowedips" >> /etc/squid/squid.conf
+sudo echo "http_access deny all" >> /etc/squid/squid.conf
+sudo echo "sudo systemctl" 
+
+

@@ -1,0 +1,75 @@
+#!/bin/bash
+
+# Redirect all output to a log file
+exec > >(tee -i ~/logfile.txt)
+exec 2>&1
+
+sudo apt-get update
+
+# install azure cli
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
+#install kubectl
+curl -LO https://dl.k8s.io/release/$(curl -Ls https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl 
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
+
+#install kubelogin
+sudo az aks install-cli
+
+# install terraform
+sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
+wget -O- https://apt.releases.hashicorp.com/gpg | \
+gpg --dearmor | \
+sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
+gpg --no-default-keyring \
+--keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg \
+--fingerprint
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
+https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
+sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update
+sudo apt-get install terraform
+
+#install terragrunt
+wget -O /tmp/terragrunt https://github.com/gruntwork-io/terragrunt/releases/download/v0.40.0/terragrunt_linux_amd64
+chmod +x /tmp/terragrunt
+sudo mv /tmp/terragrunt /usr/local/bin/terragrunt
+
+#install helm
+echo "installing helm"
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
+rm get_helm.sh
+
+
+
+
+
+mkdir ~/project
+cd ~/project
+echo "loging in to az"
+
+cat <<EOF > script.sh
+az login --use-device-code
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa -N ""
+cd ~/
+git clone https://github.com/elonetwork/elo-helm.git
+echo "cd helm repo"
+cd elo-helm/
+
+git switch feat/elhajjout-abderrahman
+cd Terragrunt/
+find ~/elo-helm/Terragrunt -type f -exec sed -i 's/"resource_group_name"/"${resource_group_name}"/g; s/"storage_account_name"/"${storage_account_name}"/g; s/"location"/"${location}"/g; s/"client_id"/"${service_principal_username}"/g; s/"client_secret"/"${service_principal_password}"/g' {} +
+terragrunt run-all apply --terragrunt-non-interactive --terragrunt-exclude-dir "**/.terragrunt-cache/**/*"  --terragrunt-exclude-dir "./cluster_components/**/*"
+EOF
+sudo chmod 777 script.sh
+sudo mv script.sh /home/adminuser/
+
+export KUBE_CONFIG_PATH=~/.kube/config 
+
+
+
+#
+#az aks get-credentials --admin --resource-group 1-af5835bd-playground-sandbox --name prd_aks_cluster
